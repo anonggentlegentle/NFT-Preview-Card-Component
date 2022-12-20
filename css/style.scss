@@ -1,0 +1,161 @@
+$color-primary-1: hsl(215, 51%, 70%);
+$color-primary-2: hsl(178, 100%, 50%);
+$color-blue-dark-1: hsl(215, 32%, 27%);
+$color-blue-dark-2: hsl(216, 50%, 16%);
+$color-blue-dark-3: hsl(217, 54%, 11%);
+$color-white: hsl(0, 0%, 100%);
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  color-scheme: dark light;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Outfit", sans-serif;
+  font-size: 1.8rem;
+  background-color: $color-blue-dark-3;
+
+  display: grid;
+  place-items: center;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 90%;
+  max-width: 35rem;
+  background-color: $color-blue-dark-2;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  color: $color-primary-1;
+  font-weight: 300;
+
+  display: grid;
+  row-gap: 2rem;
+
+  &__photo {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: hsla(178, 100%, 50%, 0.5);
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+
+  &__nft {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__view {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.13s;
+  }
+
+  &__nft:hover &__photo::before,
+  &__nft:hover &__view {
+    opacity: 1;
+  }
+
+  &__img {
+    z-index: 1;
+  }
+
+  &__eye {
+    z-index: 3;
+  }
+
+  &__heading {
+    font-size: 2.5rem;
+    color: $color-white;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      color: $color-primary-2;
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-bottom: 1px solid $color-blue-dark-1;
+    padding-bottom: 2rem;
+  }
+
+  &__eth,
+  &__time {
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+  }
+
+  &__eth {
+    font-weight: 600;
+    color: $color-primary-2;
+  }
+
+  &__time {
+    margin-left: auto;
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+    padding-bottom: 1rem;
+    font-weight: 300;
+
+    &-photo {
+      width: 3rem;
+      border: 1px solid $color-white;
+      border-radius: 50%;
+    }
+
+    &-text-highlighted {
+      color: $color-white;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        color: $color-primary-2;
+      }
+    }
+  }
+}
